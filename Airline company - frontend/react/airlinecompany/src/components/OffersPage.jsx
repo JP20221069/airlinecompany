@@ -6,7 +6,6 @@ function OffersPage() {
   let offers;  
   return (
     <div>
-        <h2>All offers</h2>
         <OneOffer></OneOffer>
     </div>
   )
