@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+.body{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.all-offers {
+  max-width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+    grid-gap: 3rem;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+.card{
+  position: relative;
+      width: 26rem;
+      margin: 0 auto ;
+      border-radius: 15px;
+}

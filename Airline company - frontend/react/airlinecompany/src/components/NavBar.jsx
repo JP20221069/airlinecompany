@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function NavBar({ token }) {
   function handleLogout() {
-    const config = "";
+    //const config = "";
     /* IZ LARAVELA SE PREUZIMA CEO KOD ZA OVO!!!! poslednji klip, 37min pre kraja
 
     axios(config)
@@ -14,6 +14,23 @@ function NavBar({ token }) {
       .catch(function (error) {
         console.log(error);
       });*/
+      var config = {
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/logoff',  //http...
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      };
+      
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        window.sessionStorage.setItem("auth_token", null);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      
   }
 
   return (
@@ -41,7 +58,7 @@ function NavBar({ token }) {
                   <a
                     className="nav-link active"
                     aria-current="page"
-                    href="#"
+                    href="/offers" //ovde sam samo dodala kosu crtu
                   >
                     Offers
                   </a>

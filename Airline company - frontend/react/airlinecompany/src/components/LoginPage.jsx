@@ -19,7 +19,7 @@ function LoginPage({addToken}) {
 
   function handleLogin(e) {
     e.preventDefault();
-    axios.post("api/login", userData).then((res) => {
+    axios.post("http://127.0.0.1:8000/api/login", userData).then((res) => { //ovo mi nije radilo bez http iz nekog razloga
         console.log(res.data);
         if(res.data.success === true){
           window.sessionStorage.setItem("auth_token", res.data.access_token);

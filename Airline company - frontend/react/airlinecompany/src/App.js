@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" element={<LoginPage addToken={addToken}/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<NavBar token={token}/>}>
-          <Route path="offers" element={<OffersPage/>}/>
+          <Route path="/offers" element={<OffersPage/>}/>
         </Route> 
       </Routes>
     </BrowserRouter>

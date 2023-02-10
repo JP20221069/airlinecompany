@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Register() {
-
+    //neke promenljive su drugacije nazvane 
     const [userData, setUserData] = useState({
         username: "",
         password: "",
         name: "",
-        surname: "",
-        birthday: ""
+        lastname: "",
+        DOB: ""
       });
     
       let navigate = useNavigate();
@@ -24,7 +24,7 @@ function Register() {
     
       function handleRegister(e) {
         e.preventDefault();
-        axios.post("api/register", userData).then((res) => {
+        axios.post("http://127.0.0.1:8000/api/register", userData).then((res) => { //ovo mi nije radilo bez http iz nekog razloga
             console.log(res.data);
             navigate("/login");
         })
@@ -68,10 +68,10 @@ function Register() {
                 <input
                   type="text"
                   className="form-control"
-                  id="Surname"
+                  id="Lastname"
                   aria-describedby="emailHelp"
-                  placeholder="Surname"
-                  name="surname"
+                  placeholder="Lastname"
+                  name="lastname"
                   onInput={handleInput}
                 />
               </div>
@@ -90,10 +90,10 @@ function Register() {
                 <input
                   type="date"
                   className="form-control"
-                  id="Birthday"
+                  id="DOB"
                   aria-describedby="emailHelp"
-                  placeholder="Birthday"
-                  name="birthday"
+                  placeholder="DOB"
+                  name="DOB"
                   onInput={handleInput}
                 />
               </div>
