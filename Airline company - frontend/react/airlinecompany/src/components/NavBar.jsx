@@ -14,15 +14,15 @@ function NavBar({ token }) {
       .catch(function (error) {
         console.log(error);
       });*/
-      var config = {
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/logoff',  //http...
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      };
-      
-      axios(config)
+    var config = {
+      method: "post",
+      url: "http://127.0.0.1:8000/api/logoff", //http...
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+
+    axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
         window.sessionStorage.setItem("auth_token", null);
@@ -30,7 +30,6 @@ function NavBar({ token }) {
       .catch(function (error) {
         console.log(error);
       });
-      
   }
 
   return (
@@ -54,6 +53,15 @@ function NavBar({ token }) {
             </button>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    href="/home"
+                  >
+                    Home Page
+                  </a>
+                </li>
                 <li className="nav-item">
                   <a
                     className="nav-link active"

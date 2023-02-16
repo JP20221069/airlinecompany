@@ -4,6 +4,7 @@ import LoginPage from "./components/LoginPage";
 import Register from "./components/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import HomePage from "./components/HomePage";
 import { useState } from "react";
 import OffersPage from "./components/OffersPage";
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<NavBar token={token}/>}>
           <Route path="/offers" element={<OffersPage/>}/>
+          <Route path="/home" element={<HomePage/>}/>
         </Route> 
       </Routes>
     </BrowserRouter>
