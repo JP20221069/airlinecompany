@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserCollection;
-use App\Http\Resources\UserResource;
-use App\Models\User;
+use App\Http\Resources\AircraftCollection;
+use App\Http\Resources\AircraftResource;
+use App\Models\Aircraft;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AircraftController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return new UserCollection(User::all());
+        //
+        return new AircraftCollection(Aircraft::all());
     }
 
     /**
@@ -43,21 +44,22 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Aircraft  $aircraft
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        return new UserResource(User::find($id));
+        //
+        return new AircraftResource(Aircraft::find($id));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Aircraft  $aircraft
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Aircraft $aircraft)
     {
         //
     }
@@ -66,10 +68,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Aircraft  $aircraft
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Aircraft $aircraft)
     {
         //
     }
@@ -77,10 +79,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Aircraft  $aircraft
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Aircraft $aircraft)
     {
         //
     }

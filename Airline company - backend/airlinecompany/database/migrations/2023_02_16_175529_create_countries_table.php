@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles_netobjects', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id');
-            $table->foreignId('netobject_id');
-            $table->boolean('R');
-            $table->boolean('W');
-            $table->boolean('E');
-            $table->boolean('D');
+            $table->string("name");
+            $table->string("ISOname");
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles_objects');
+        Schema::dropIfExists('countries');
     }
 };

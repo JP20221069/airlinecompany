@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserCollection;
-use App\Http\Resources\UserResource;
-use App\Models\User;
+use App\Http\Resources\RoleCollection;
+use App\Http\Resources\RoleResource;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return new UserCollection(User::all());
+        //
+        return new RoleCollection(Role::all());
     }
 
     /**
@@ -43,21 +44,22 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        return new UserResource(User::find($id));
+        //
+        return new RoleResource(Role::find($id));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Role $role)
     {
         //
     }
@@ -66,10 +68,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -77,10 +79,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Role $role)
     {
         //
     }
