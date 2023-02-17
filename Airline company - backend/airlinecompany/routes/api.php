@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\AircraftController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\FlightController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,6 +28,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/users',[UserController::class,'index']);
 Route::get('/users/{id}',[UserController::class,'show']);
 Route::get('/counttest',[TestController::class,'testcount']);
+Route::get('/flights',[FlightController::class,'index']);
+Route::get('/flight/{id}',[FlightController::class,'show']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //Route::get('/aircraft',[AircraftController::class,'index']);
@@ -34,5 +37,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/test',[TestController::class,'test']);
     Route::post('/reserve',[ReservationController::class,'store']);
     Route::post('/myreservations',[ReservationController::class,'myreservations']);
+    Route::get('/reservations',[ReservationController::class,'index']);
     Route::post('/logoff', [AuthController::class, 'logoff']);
 });

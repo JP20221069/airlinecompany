@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Aircraft;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Flight;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         User::truncate();
         Role::truncate();
+        Flight::truncate();
         Aircraft::truncate();
         Country::truncate();
         City::truncate();
@@ -38,6 +40,7 @@ class DatabaseSeeder extends Seeder
         ['name'=>'New York','IATA'=>'JFK','ICAO'=>'KJFK','country_id'=>'3'],
         ['name'=>'Moscow','IATA'=>'SVO','ICAO'=>'UUEE','country_id'=>'4'],
         ['name'=>'Tokyo','IATA'=>'HND','ICAO'=>'RJTT','country_id'=>'5']]);
+        Flight::insert([['city_from'=>'1','city_to'=>'2','datetime_arrival'=>'2023-02-17','datetime_departure'=>'2023-02-17','aircraft_id'=>'1']]);
         User::factory(20)->create();
     }
 }
