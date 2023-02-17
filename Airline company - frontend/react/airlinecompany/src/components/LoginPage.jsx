@@ -76,7 +76,7 @@ function LoginPage({addToken}) {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="btn btn-color px-5 mb-5 w-100"
+                    className="btn btn-primary btn-block"
                   >
                     Login
                   </button>
@@ -85,8 +85,9 @@ function LoginPage({addToken}) {
                   id="emailHelp"
                   className="form-text text-center mb-5 text-dark"
                 >
+                  <br></br>
                   Not Registered?{" "}
-                  <a href="#" className="text-dark fw-bold">
+                  <a href="/register" className="text-dark fw-bold">
                     {" "}
                     Create an Account
                   </a>
