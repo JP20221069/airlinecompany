@@ -14,11 +14,10 @@ return new class extends Migration
      */
     public function up()
     {
-        $proc='DROP PROCEDURE IF EXISTS `PEOPLEONFLIGHT`;
-        DELIMITER $$
+        DB::unprepared('DROP PROCEDURE IF EXISTS `PEOPLEONFLIGHT`;');
+        $proc='
         CREATE PROCEDURE `PEOPLEONFLIGHT`(IN `FLIGHTID` INT)
-        SELECT SUM(NUMBER_OF_ADULTS) + SUM(NUMBER_OF_CHILDREN) AS PEOPLEONFLIGHT FROM reservations WHERE FLIGHT_ID=FLIGHTID$$
-        DELIMITER ;';
+        SELECT SUM(NUMBER_OF_ADULTS) + SUM(NUMBER_OF_CHILDREN) AS PEOPLEONFLIGHT FROM reservations WHERE FLIGHT_ID=FLIGHTID;';
         DB::unprepared($proc);
     }
 
