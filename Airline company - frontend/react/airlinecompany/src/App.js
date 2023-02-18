@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import { useState } from "react";
 import OffersPage from "./components/OffersPage";
 import Profile from "./components/Profile";
+import axios from "axios";
 
 function App() {
   const [token, setToken] = useState();
@@ -21,17 +22,19 @@ function App() {
 
   function addUser(user){
     setUser(user);
+    console.log(user);
   }
 
+  
   return (
     <BrowserRouter className="App">
       <Routes>
         <Route path="/login" element={<LoginPage addToken={addToken} addUser={addUser}/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<NavBar token={token} user={user}/>}>
-          <Route path="offers" element={<OffersPage token={token}/>}/>
-          <Route path="home" element={<HomePage token={token}/>}/>
-          <Route path="profile" element={<Profile token={token}/>}/>
+          <Route path="offers" element={<OffersPage token={token} user={user}/>}/>
+          <Route path="home" element={<HomePage token={token} user={user}/>}/>
+          <Route path="profile" element={<Profile token={token} user={user}/>}/>
         </Route> 
       </Routes>
     </BrowserRouter>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Outlet } from "react-router-dom";
 import {Link} from "react-router-dom";
 
+
 function NavBar({ token, user }) {
   function handleLogout() {
   
@@ -23,6 +24,7 @@ function NavBar({ token, user }) {
         console.log(error);
       });
   }
+  
 
   return (
     <div>

@@ -9,8 +9,6 @@ function LoginPage({addToken, addUser}) {
     password: "",
   });
 
-  const [user, setUser] = useState();
-
   let navigate = useNavigate();
 
   function handleInput(e) {
@@ -24,7 +22,6 @@ function LoginPage({addToken, addUser}) {
     axios.post("http://127.0.0.1:8000/api/login", userData).then((res) => { //ovo mi nije radilo bez http iz nekog razloga
         console.log(res.data.logged_user);
         if(res.data.success === true){
-          setUser(res.data.logged_user);
           window.sessionStorage.setItem("user", res.data.logged_user);
           window.sessionStorage.setItem("auth_token", res.data.access_token);
           addToken(res.data.access_token);

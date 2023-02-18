@@ -1,114 +1,97 @@
 import React, { Fragment } from "react";
 
-
-
-function Profile() {
-  
-  const loggedInUser = localStorage.getItem('user');
-  console.log(loggedInUser);
-
+function Profile({ user, token }) {
+  console.log(user.name + " PROFILE");
   return (
     <div>
-      <div className="page-content page-container" id="page-content">
-        <div className="padding">
-          <div className="row container d-flex justify-content-center">
-            <div className="col-xl-6 col-md-12">
-              <div className="card user-card-full">
-                <div className="row m-l-0 m-r-0">
-                  <div className="col-sm-4 bg-c-lite-green user-profile">
-                    <div className="card-block text-center text-white">
-                      <div className="m-b-25">
-                        <img
-                          src="https://img.icons8.com/bubbles/100/000000/user.png"
-                          className="img-radius"
-                          alt="User-Profile-Image"
-                        />
-                      </div>
-                      <h6 className="f-w-600">{loggedInUser.name}</h6>
-                      <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                    </div>
-                  </div>
-                  <div className="col-sm-8">
-                    <div className="card-block">
-                      <h6 className="m-b-20 p-b-5 b-b-default f-w-600">
-                        Information
-                      </h6>
-                      <div className="row">
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Email</p>
-                          <h6 className="text-muted f-w-400">rntng@gmail.com</h6>
-                        </div>
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Phone</p>
-                          <h6 className="text-muted f-w-400">98979989898</h6>
-                        </div>
-                      </div>
-                      <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
-                        Projects
-                      </h6>
-                      <div className="row">
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Recent</p>
-                          <h6 className="text-muted f-w-400">Sam Disuja</h6>
-                        </div>
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Most Viewed</p>
-                          <h6 className="text-muted f-w-400">Dinoter husainm</h6>
-                        </div>
-                      </div>
-                      <ul className="social-link list-unstyled m-t-40 m-b-10">
-                        <li>
-                          <a
-                            href="#!"
-                            data-toggle="tooltip"
-                            data-placement="bottom"
-                            title=""
-                            data-original-title="facebook"
-                            data-abc="true"
-                          >
-                            <i
-                              className="mdi mdi-facebook feather icon-facebook facebook"
-                              aria-hidden="true"
-                            ></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="#!"
-                            data-toggle="tooltip"
-                            data-placement="bottom"
-                            title=""
-                            data-original-title="twitter"
-                            data-abc="true"
-                          >
-                            <i
-                              className="mdi mdi-twitter feather icon-twitter twitter"
-                              aria-hidden="true"
-                            ></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="#!"
-                            data-toggle="tooltip"
-                            data-placement="bottom"
-                            title=""
-                            data-original-title="instagram"
-                            data-abc="true"
-                          >
-                            <i
-                              className="mdi mdi-instagram feather icon-instagram instagram"
-                              aria-hidden="true"
-                            ></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+      <div className="container rounded bg-white mt-5 mb-5">
+        <div className="row">
+          <div className="col-md-3 border-right">
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+              <img
+                className="rounded-circle mt-5"
+                width="150px"
+                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+              />
+              <span className="font-weight-bold">{user.name}</span>
+              <span className="text-black-50">{user.email}</span>
+              <span> </span>
+            </div>
+          </div>
+          <div className="col-md-5 border-right">
+            <div className="p-3 py-5">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h4 className="text-right">My Profile</h4>
+              </div>
+              <div className="row mt-2">
+                <div className="col-md-6">
+                  <label className="labels">Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="first name"
+                    value={user.name}
+                  />
                 </div>
+                <div className="col-md-6">
+                  <label className="labels">Surname</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={user.lastname}
+                    placeholder="surname"
+                  />
+                </div>
+              </div>
+              <div className="row mt-3">
+                <div className="col-md-12">
+                  <label className="labels">Email</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="enter phone number"
+                    value={user.email}
+                  />
+                </div>
+                <div className="col-md-12">
+                  <label className="labels">Date of birth</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="enter address line 1"
+                    value={user.DOB}
+                  />
+                </div>
+                <div className="col-md-12">
+                  <label className="labels">Username</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="enter address line 1"
+                    value={user.username}
+                  />
+                </div>
+                <div className="col-md-12">
+                  <label className="labels">Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="******"
+                    value={user.password}
+                  />
+                </div>
+              </div>
+              <div className="mt-5 text-center">
+                <button
+                  className="btn btn-primary profile-button"
+                  type="button"
+                >
+                  Save Profile
+                </button>
               </div>
             </div>
           </div>
+          <div className="col-md-4"></div>
         </div>
       </div>
     </div>
