@@ -3,11 +3,13 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-function LoginPage({addToken}) {
+function LoginPage({addToken, addUser}) {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
   });
+
+  const [user, setUser] = useState();
 
   let navigate = useNavigate();
 
@@ -20,10 +22,13 @@ function LoginPage({addToken}) {
   function handleLogin(e) {
     e.preventDefault();
     axios.post("http://127.0.0.1:8000/api/login", userData).then((res) => { //ovo mi nije radilo bez http iz nekog razloga
-        console.log(res.data);
+        console.log(res.data.logged_user);
         if(res.data.success === true){
+          setUser(res.data.logged_user);
+          window.sessionStorage.setItem("user", res.data.logged_user);
           window.sessionStorage.setItem("auth_token", res.data.access_token);
           addToken(res.data.access_token);
+          addUser(res.data.logged_user);
           navigate("/");
         }
         

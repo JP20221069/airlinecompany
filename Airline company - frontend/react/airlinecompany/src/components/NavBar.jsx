@@ -1,22 +1,15 @@
 import React from "react";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-function NavBar({ token }) {
+function NavBar({ token, user }) {
   function handleLogout() {
-    //const config = "";
-    /* IZ LARAVELA SE PREUZIMA CEO KOD ZA OVO!!!! poslednji klip, 37min pre kraja
-
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });*/
+  
     var config = {
       method: "post",
-      url: "http://127.0.0.1:8000/api/logoff", //http...
+      maxBodyLength: Infinity,
+      url: "http://127.0.0.1:8000/api/logoff",
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -25,7 +18,6 @@ function NavBar({ token }) {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        window.sessionStorage.setItem("auth_token", null);
       })
       .catch(function (error) {
         console.log(error);
@@ -54,42 +46,24 @@ function NavBar({ token }) {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a
-                    className="nav-link active"
-                    aria-current="page"
-                    href="/home"
-                  >
-                    Home Page
-                  </a>
+                  <Link className="nav-link active" to="/home">Home Page</Link> 
                 </li>
                 <li className="nav-item">
-                  <a
-                    className="nav-link active"
-                    aria-current="page"
-                    href="/offers" //ovde sam samo dodala kosu crtu
-                  >
-                    Offers
-                  </a>
+                <Link className="nav-link active" to="/offers">Offers</Link>
                 </li>
                 {token == null ? (
                   <></>
                 ) : (
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      Profile
-                    </a>
+                     <Link className="nav-link active" to="/profile">Profile</Link>
                   </li>
                 )}
 
                 <li className="nav-item">
                   {token == null ? (
-                    <a className="nav-link" href="/login">
-                      Login
-                    </a>
+                     <Link className="nav-link active" to="/login">Login</Link>
                   ) : (
-                    <a className="nav-link" href="/" onClick={handleLogout}>
-                      Logout
-                    </a>
+                    <a className="nav-link active" href="/" onSubmit={handleLogout}>Logout</a>
                   )}
                 </li>
                 <li className="nav-item">
