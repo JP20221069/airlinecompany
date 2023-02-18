@@ -9,12 +9,14 @@ import { useState } from "react";
 import OffersPage from "./components/OffersPage";
 import Profile from "./components/Profile";
 import axios from "axios";
+import MyReservations from "./components/MyReservations";
 
 function App() {
   const [token, setToken] = useState();
 
   const [user, setUser] = useState({});
 
+  const [reservations, setReservations] = useState([]);
 
   function addToken(auth_token){
     setToken(auth_token);
@@ -25,6 +27,10 @@ function App() {
     console.log(user);
   }
 
+  function addReservations(reservations){
+    setReservations(reservations);
+    console.log(reservations);
+  }
   
   return (
     <BrowserRouter className="App">
@@ -34,7 +40,8 @@ function App() {
         <Route path="/" element={<NavBar token={token} user={user}/>}>
           <Route path="offers" element={<OffersPage token={token} user={user}/>}/>
           <Route path="home" element={<HomePage token={token} user={user}/>}/>
-          <Route path="profile" element={<Profile token={token} user={user}/>}/>
+          <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations}/>}/>
+          <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations}/>}/>
         </Route> 
       </Routes>
     </BrowserRouter>

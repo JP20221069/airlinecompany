@@ -1,7 +1,32 @@
 import React, { Fragment } from "react";
+import axios from "axios";
+import { useState } from "react";
 
-function Profile({ user, token }) {
+function Profile({ user, token, addReservations }) {
+
   console.log(user.name + " PROFILE");
+
+  function getReservations() {
+    var config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: "http://127.0.0.1:8000/api/myreservations",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        addReservations(response.data.reservations);
+        console.log(response.data.reservations);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   return (
     <div>
       <div className="container rounded bg-white mt-5 mb-5">
@@ -49,7 +74,7 @@ function Profile({ user, token }) {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="enter phone number"
+                    placeholder="enter email"
                     value={user.email}
                   />
                 </div>
@@ -58,7 +83,7 @@ function Profile({ user, token }) {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="enter address line 1"
+                    placeholder="enter date of birth"
                     value={user.DOB}
                   />
                 </div>
@@ -67,7 +92,7 @@ function Profile({ user, token }) {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="enter address line 1"
+                    placeholder="enter username"
                     value={user.username}
                   />
                 </div>
@@ -87,6 +112,15 @@ function Profile({ user, token }) {
                   type="button"
                 >
                   Save Profile
+                </button>
+              </div>
+              <div className="mt-5 text-center">
+                <button
+                  onClick={getReservations}
+                  className="btn btn-primary profile-button"
+                  type="button"
+                >
+                  My Reservations
                 </button>
               </div>
             </div>

@@ -5,6 +5,9 @@ import {Link} from "react-router-dom";
 
 
 function NavBar({ token, user }) {
+
+
+
   function handleLogout() {
   
     var config = {
@@ -60,6 +63,13 @@ function NavBar({ token, user }) {
                      <Link className="nav-link active" to="/profile">Profile</Link>
                   </li>
                 )}
+                <li className="nav-item">
+                  {token == null ? (
+                     <></>
+                  ) : (
+                    <Link className="nav-link active" to="/myreservations">MyReservations</Link>
+                  )}
+                </li>
 
                 <li className="nav-item">
                   {token == null ? (
