@@ -14,12 +14,12 @@ class Flight extends Model
 
     public function cityfrom()
     {
-        return $this->belongsTo(City::class,'city_id');
+        return $this->belongsTo(City::class,'city_from','id');
     }
 
     public function cityto()
     {
-        return $this->belongsTo(City::class,'city_id');
+        return $this->belongsTo(City::class,'city_to','id');
     }
 
     public function aircraft()
