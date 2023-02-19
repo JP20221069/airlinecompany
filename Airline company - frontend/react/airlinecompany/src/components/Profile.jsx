@@ -109,7 +109,7 @@ function Profile({ user, token, addReservations }) {
               </div>
               <div className="mt-5 text-center">
                 <button
-                  className="btn btn-primary profile-button"
+                  className="btn btn-outline-secondary"
                   type="button"
                 >
                   Save Profile
@@ -118,7 +118,7 @@ function Profile({ user, token, addReservations }) {
               <div className="mt-5 text-center">
                 <Link
                   onClick={getReservations}
-                  className="btn btn-primary profile-button"
+                  className="btn btn-outline-secondary"
                   type="button"
                   to = "/myreservations"
                 >
