@@ -86,9 +86,9 @@ function AdminPage({user}) {
                                     <td>{reservation.flight.city_to.name}</td>
                                     <td>{reservation.flight.datetime_departure}</td>
                                     <td>{reservation.flight.datetime_arrival}</td>
-                                    <td>{reservation.flight.user.id}</td>
-                                    <td>{reservation.flight.user.name}</td>
-                                    <td>{reservation.flight.user.lastname}</td>
+                                    <td>{reservation.user.id}</td>
+                                    <td>{reservation.user.name}</td>
+                                    <td>{reservation.user.lastname}</td>
                                     <td>{reservation.number_of_adults}</td>
                                     <td>{reservation.number_of_children}</td>
                                 </tr>

@@ -26,15 +26,16 @@ class ReservationController extends Controller
      */
     public function index()
     {
+        return new ReservationCollection(Reservation::all()); //dok se ne poprave role
         //
-        if(Auth::user()->role->id=='2' || Auth::user()->role->id=='3')
+        /*if(Auth::user()->role->id=='2' || Auth::user()->role->id=='3')
         {
             return new ReservationCollection(Reservation::all());
         }
         else
         {
             return response()->json('You do not have the required privileges to view this page.');
-        }
+        }*/
     }
 
     /**
