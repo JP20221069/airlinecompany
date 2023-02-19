@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Profile({ user, token, addReservations }) {
 
@@ -115,13 +116,14 @@ function Profile({ user, token, addReservations }) {
                 </button>
               </div>
               <div className="mt-5 text-center">
-                <button
+                <Link
                   onClick={getReservations}
                   className="btn btn-primary profile-button"
                   type="button"
+                  to = "/myreservations"
                 >
                   My Reservations
-                </button>
+                </Link>
               </div>
             </div>
           </div>

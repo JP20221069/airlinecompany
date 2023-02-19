@@ -1,15 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 function NavBar({ token, user }) {
-
-
-
   function handleLogout() {
-  
     var config = {
       method: "post",
       maxBodyLength: Infinity,
@@ -27,7 +22,6 @@ function NavBar({ token, user }) {
         console.log(error);
       });
   }
-  
 
   return (
     <div>
@@ -51,31 +45,38 @@ function NavBar({ token, user }) {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/home">Home Page</Link> 
+                  <Link className="nav-link active" to="/home">
+                    Home Page
+                  </Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link active" to="/offers">Offers</Link>
+                  <Link className="nav-link active" to="/offers">
+                    Offers
+                  </Link>
                 </li>
                 {token == null ? (
                   <></>
                 ) : (
                   <li className="nav-item">
-                     <Link className="nav-link active" to="/profile">Profile</Link>
+                    <Link className="nav-link active" to="/profile">
+                      Profile
+                    </Link>
                   </li>
                 )}
-                <li className="nav-item">
-                  {token == null ? (
-                     <></>
-                  ) : (
-                    <Link className="nav-link active" to="/myreservations">MyReservations</Link>
-                  )}
-                </li>
 
                 <li className="nav-item">
                   {token == null ? (
-                     <Link className="nav-link active" to="/login">Login</Link>
+                    <Link className="nav-link active" to="/login">
+                      Login
+                    </Link>
                   ) : (
-                    <a className="nav-link active" href="/" onSubmit={handleLogout}>Logout</a>
+                    <a
+                      className="nav-link active"
+                      href="/"
+                      onSubmit={handleLogout}
+                    >
+                      Logout
+                    </a>
                   )}
                 </li>
                 <li className="nav-item">
