@@ -1,19 +1,54 @@
 import React from "react";
 
-function OneOffer() {
+function OneOffer({ offer }) {
+
+  var strDeparture = offer.datetime_departure;  //ISO string
+  var strArrival = offer.datetime_arrival;      //ISO string
+
+  var dateDep = new Date(strDeparture);         //Date object
+  var dateArr = new Date(strArrival);           //Date object
+
+  var strDep = dateDep.toDateString();          //formatted string
+  var strDepTime = dateDep.toTimeString().substring(0,5);//formatted string
+  var strArrTime = dateArr.toTimeString().substring(0,5);//formatted string
+
+  const timeDiff = Math.abs(dateArr.getTime() - dateDep.getTime());
+  const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+ 
   return (
     <div>
       <div className="card">
-        <img src="https://img.freepik.com/free-photo/full-shot-travel-concept-with-landmarks_23-2149153258.jpg?3&w=996&t=st=1675966983~exp=1675967583~hmac=43927dfa760393052ba72a6a688281a2ac91c0b83eec8a52dfa5f63179bae9e2" className="card-img-top" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
-          </a>
+          <div className="card-date-time">
+            <h4>{strDep}</h4>
+            <div className="card-time">
+              <div className="card-departure-time">
+                <h1>{strDepTime}</h1>
+                <p>{offer.city_from.name}</p>
+              </div>
+              <div className="card-flight-duration">
+                <hr />
+                {hours == 0 ? (
+                  <p>{minutes}min</p>
+                ) : (
+                  <p>{hours}h {minutes}min</p>
+                )}
+              </div>
+              <div className="card-arrival-time">
+                <h1>{strArrTime}</h1>
+                <p>{offer.city_to.name}</p>
+              </div>
+            </div>
+          </div>
+          <div className="card-pricing">
+            <p>Pricing</p>
+            <p>from</p>
+            <h1>$150.00</h1>
+            <a href="#" className="btn btn-outline-secondary">
+              Book This Flight
+            </a>
+          </div>
         </div>
       </div>
     </div>
