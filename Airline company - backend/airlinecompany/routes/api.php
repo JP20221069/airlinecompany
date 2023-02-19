@@ -40,6 +40,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/test',[TestController::class,'test']);
     Route::post('/reserve',[ReservationController::class,'store']);
     Route::get('/myreservations',[ReservationController::class,'myreservations']);
-   // Route::get('/reservations',[ReservationController::class,'index']); ovako dok se ne poprave role
+    Route::get('/reservations',[ReservationController::class,'index']);
     Route::post('/logoff', [AuthController::class, 'logoff']);
 });

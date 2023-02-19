@@ -17,7 +17,7 @@ class ReservationResource extends JsonResource
     {
         return [
           'id'=>$this->resource->id,
-          'flight'=>$this->resource->flight,
+          'flight'=>new FlightResource($this->resource->flight),
           'user'=>$this->resource->user,
           'number_of_adults'=>$this->resource->number_of_adults,
           'number_of_children'=>$this->resource->number_of_children
