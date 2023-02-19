@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-function AdminPage() {
+function AdminPage({user}) {
 
     const [users, setUsers] = useState();
     useEffect(() => {
