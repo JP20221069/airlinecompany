@@ -33,7 +33,7 @@ function MyReservations({ user, token, reservations }) {
                 <td>
                   <div className="ms-3">
                     <p className="fw-bold mb-1">
-                      {reservation.flight.city_from}
+                      {reservation.flight.city_from.name}
                     </p>
                     <p className="text-muted mb-0">
                       {reservation.flight.datetime_departure}
@@ -43,7 +43,7 @@ function MyReservations({ user, token, reservations }) {
                 <td>
                   <div className="ms-3">
                     <p className="fw-bold mb-1">
-                      {reservation.flight.city_to}
+                      {reservation.flight.city_to.name}
                     </p>
                     <p className="text-muted mb-0">
                       {reservation.flight.datetime_arrival}

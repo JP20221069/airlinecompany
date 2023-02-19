@@ -43,7 +43,7 @@ function App() {
           <Route path="home" element={<HomePage token={token} user={user}/>}/>
           <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations}/>}/>
           <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations}/>}/>
-          <Route path="admin" element={<AdminPage user={user}/>}/>
+          <Route path="admin" element={<AdminPage user={user} token={token}/>}/>
         </Route> 
       </Routes>
     </BrowserRouter>
