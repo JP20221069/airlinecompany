@@ -25,8 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/users',[UserController::class,'index']);
-Route::get('/users/{id}',[UserController::class,'show']);
+
 Route::get('/counttest',[TestController::class,'testcount']);
 Route::get('/flights',[FlightController::class,'index']);
 Route::get('/flight/{id}',[FlightController::class,'show']);
@@ -34,7 +33,8 @@ Route::get('/flight/{id}',[FlightController::class,'show']);
 Route::get('/reservations',[ReservationController::class,'index']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
+    Route::get('/users',[UserController::class,'index']);
+    Route::get('/users/{id}',[UserController::class,'show']);
     //Route::get('/aircraft',[AircraftController::class,'index']);
     //Route::get('/aircraft/{id}',[AircraftController::class,'show']);
     Route::get('/test',[TestController::class,'test']);

@@ -6,6 +6,7 @@ use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,7 +17,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        return new UserCollection(User::all());
+        if(Auth::user()->role->id=='2' || Auth::user()->role->id=='3')
+        {
+            return new UserCollection(User::all());
+        }
+        else
+        {
+            return response()->json('You do not have the required privileges to view this page.');
+        }
+       
     }
 
     /**
@@ -48,7 +57,15 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return new UserResource(User::find($id));
+        
+        if(Auth::user()->role->id=='2' || Auth::user()->role->id=='3')
+        {
+            return new UserResource(User::find($id));
+        }
+        else
+        {
+            return response()->json('You do not have the required privileges to view this page.');
+        }
     }
 
     /**
