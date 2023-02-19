@@ -47,6 +47,18 @@
   min-height: 100vh;
 }
 
+.login-body{
+  height: 50%;
+} 
+
+/*------------*/
+/* Login Page */
+/*------------*/
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+}
 
 /*-------------*/
 /* Offers Page */
