@@ -63,6 +63,18 @@ function NavBar({ token, user }) {
                     </Link>
                   </li>
                 )}
+                {token == null ? (
+                  <></>
+                ) : (
+                  user.role_id == 2 ? (
+                  <li className="nav-item">
+                    <Link className="nav-link active" to="/admin">
+                      Admin Page
+                    </Link>
+                  </li>
+                  ) :
+                  <></>
+                )}
 
                 <li className="nav-item">
                   {token == null ? (

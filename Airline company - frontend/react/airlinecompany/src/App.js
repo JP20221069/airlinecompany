@@ -5,6 +5,7 @@ import Register from "./components/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
+import AdminPage from "./components/AdminPage";
 import { useState } from "react";
 import OffersPage from "./components/OffersPage";
 import Profile from "./components/Profile";
@@ -42,6 +43,7 @@ function App() {
           <Route path="home" element={<HomePage token={token} user={user}/>}/>
           <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations}/>}/>
           <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations}/>}/>
+          <Route path="admin" element={<AdminPage user={user}/>}/>
         </Route> 
       </Routes>
     </BrowserRouter>
