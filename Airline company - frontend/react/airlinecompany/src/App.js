@@ -46,6 +46,7 @@ function App() {
           <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations}/>}/>
           <Route path="admin" element={<AdminPage user={user} token={token}/>}/>
           <Route path="map" element={<Map/>}/>
+          
 
         </Route> 
       </Routes>
