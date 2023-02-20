@@ -55,5 +55,6 @@ class DatabaseSeeder extends Seeder
         Flight::insert([['city_from'=>'2','city_to'=>'3','datetime_arrival'=>'2023-02-19','datetime_departure'=>'2023-02-20','aircraft_id'=>'3']]);
         Flight::insert([['city_from'=>'3','city_to'=>'2','datetime_arrival'=>'2023-02-19','datetime_departure'=>'2023-02-20','aircraft_id'=>'3']]);
         User::factory(20)->create();
+        //User::insert(['name'=>'Admin','lastname'=>'Admin','username'=>'admin','password'=>'123123','email'=>'admin@yopmail.com','role_id'=>'2','DOB'=>'1971-01-01']);
     }
 }

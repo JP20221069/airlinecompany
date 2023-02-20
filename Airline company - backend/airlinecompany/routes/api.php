@@ -30,7 +30,7 @@ Route::get('/counttest',[TestController::class,'testcount']);
 Route::get('/flights',[FlightController::class,'index']);
 Route::get('/flight/{id}',[FlightController::class,'show']);
 
-Route::get('/reservations',[ReservationController::class,'index']);
+//Route::get('/reservations',[ReservationController::class,'index']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users',[UserController::class,'index']);
@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/test',[TestController::class,'test']);
     Route::post('/reserve',[ReservationController::class,'store']);
     Route::get('/myreservations',[ReservationController::class,'myreservations']);
+    Route::post('/editprofile',[UserController::class,'selfupdate']);
+    Route::post('/deleteuser/{userid}',[UserController::class,'admindelete']);
     Route::get('/reservations',[ReservationController::class,'index']);
     Route::post('/logoff', [AuthController::class, 'logoff']);
 });

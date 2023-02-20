@@ -7,6 +7,8 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -26,6 +28,49 @@ class UserController extends Controller
             return response()->json('You do not have the required privileges to view this page.');
         }
        
+    }
+
+    public function selfupdate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'DOB' => 'required|date',
+            'email' => 'required|string|max:255|email',
+            'password' => 'required|string|min:3'
+        ]);
+
+
+        if ($validator->fails())
+            return response()->json($validator->errors());
+
+        $usr = Auth::user();
+        $usr->name = $request->name;
+        $usr->lastname = $request->lastname;
+        $usr->username=$request->username;
+        $usr->DOB=$request->DOB;
+        $usr->email=$request->email;
+        if($usr->password!=$request->password)
+        {
+            $usr->password=Hash::make($request->password);
+        }
+        $usr->save();
+        return response()->json('User updated successfully.');
+    }
+
+    public function admindelete($userid)
+    {
+        if(Auth::user()->role->id=='2')
+        {
+            $usr = User::find($userid);
+            $usr->delete();
+            return response()->json('Successfully deleted user.');
+        }
+        else
+        {
+            return response()->json('You do not have the required privileges to view this page.');
+        }
     }
 
     /**
