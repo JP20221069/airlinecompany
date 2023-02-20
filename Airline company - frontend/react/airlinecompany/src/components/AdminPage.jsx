@@ -10,7 +10,7 @@ function AdminPage({ token, user }) {
   const [users, setUsers] = useState();
   useEffect(() => {
     if (users == null) {
-      axios.get("http://127.0.0.1:8000/api/users").then((response) => {
+      axios.get("http://127.0.0.1:8000/api/users", config ).then((response) => {
         console.log(response.data);
         setUsers(response.data.users);
       });
