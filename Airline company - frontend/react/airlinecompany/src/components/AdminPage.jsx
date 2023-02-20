@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { FiUserMinus } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 function AdminPage({ token, user }) {
 
-  console.log(token);
-  console.log(user);
-    
+  // console.log(token);
+  // console.log(user);
+
   const [users, setUsers] = useState();
   var config2 = {
     method: "get",
@@ -46,6 +48,10 @@ function AdminPage({ token, user }) {
     }
   });
 
+  const deleteUser = event => {
+    console.log("delete")
+  }
+
   return (
     <div>
       <section>
@@ -57,21 +63,23 @@ function AdminPage({ token, user }) {
                 <th>ID</th>
                 <th>Name</th>
                 <th>Role</th>
+                <th style={{ color: 'red' }}>DELETE</th>
               </tr>
             </thead>
           </table>
         </div>
         <div className="tbl-content">
-          <table cellPadding={0} cellSpacing={0} border={0}>
-            <tbody>
+          <table >
+            <tbody >
               {users == null ? (
                 <></>
               ) : (
                 users.map((user, index) => (
-                  <tr key={index}>
+                  <tr key={index} >
                     <td>{index}</td>
                     <td>{user.name}</td>
                     <td>{user.role.name}</td>
+                    <td><Link style={{ color: 'red' }} onClick={deleteUser}><FiUserMinus /></Link></td>
                   </tr>
                 ))
               )}
