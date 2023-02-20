@@ -52,11 +52,6 @@ function NavBar({ token, user }) {
                     Home Page
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link active" to="/offers">
-                    Offers
-                  </Link>
-                </li>
                 {token == null ? (
                   <></>
                 ) : (

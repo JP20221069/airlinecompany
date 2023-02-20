@@ -1,34 +1,28 @@
 import React from "react";
 import { useState, useEffect, useMemo } from "react";
 import DataTable from "react-data-table-component";
+import { FaPlane } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 
 function OffersPage({ offers }) {
 
+  const [flights, setFlights] = useState(offers);
   const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
   const handleFromChange = fromEvent => {
     setFrom(fromEvent.target.value);
     // console.log('from is: ', fromEvent.target.value);
   }
-  const [to, setTo] = useState('');
   const handleToChange = toEvent => {
     setTo(toEvent.target.value);
     // console.log('to is: ', toEvent.target.value);
   }
-  // const [dep, setDep] = useState('');
-  // const handleDepChange = depEvent => {
-  //   setDep(depEvent.target.value);
-  //   console.log('dep is: ', depEvent.target.value);
-  // }
-  // const [arr, setArr] = useState('');
-  // const handleArrChange = arrEvent => {
-  //   setArr(arrEvent.target.value);
-  //   console.log('arr is: ', arrEvent.target.value);
-  // }
   const columns = [
     {
       name: "ID",
-      selector: row => row.id
+      selector: row => row.id,
+      maxWidth : '10px '
     },
     {
       name: "City From",
@@ -47,35 +41,13 @@ function OffersPage({ offers }) {
       name: "Arrival Date & Time",
       selector: row => row.datetime_arrival,
       sortable: true,
+    },
+    {
+      name: "Book Flight",
+      cell: () => <Link ><FaPlane/></Link>,
+      center: true,
     }
   ]
-
-  // const [filterText, setFilterText] = useState('');
-  // const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-  // const filteredItems = offers.filter(
-  //   item => item.city_from.name && item.city_from.name.toLowerCase().includes(filterText.toLowerCase()),
-  // );
-  // function handleFrom(event) {
-  //   const newData = offers.filter(row => {
-  //     return row.city_from.name.toLowerCase().includes(event.target.value.toLowerCase());
-  //   })
-  //   setOffers(newData)
-  // }
-  // const subHeaderComponentMemo = useMemo(() => {
-  //   const handleClear = () => {
-  //     if (filterText) {
-  //       setResetPaginationToggle(!resetPaginationToggle);
-  //       setFilterText('');
-  //     }
-  //   };
-
-  //   return (
-  //     <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
-  //   );
-  // }, [filterText, resetPaginationToggle]);
-
-  const [flights, setFlights] = useState(offers);
-  
   function filterFlights() {
     console.log(offers)
     setFlights(offers)
@@ -94,18 +66,6 @@ function OffersPage({ offers }) {
       <div>
         <div className="wrapper border">
           <form action="#">
-            {/* <div className="form-group border-bottom d-flex align-items-center justify-content-around flex-wrap">
-              <label className="option">
-                <input type="radio" name="radio" id="" />
-                Round trip
-                <span className="checkmark"></span>
-              </label>
-              <label className="option">
-                <input type="radio" name="radio" id="" />
-                One way
-                <span className="checkmark"></span>
-              </label>
-            </div> */}
             <div className="form-group d-sm-flex margin">
               <div className="d-flex align-items-center flex-fill me-sm-1 my-sm-0 my-4 border-bottom position-relative">
                 <input
@@ -134,34 +94,7 @@ function OffersPage({ offers }) {
                 <div className="label" id="to" />
               </div>
             </div>
-            {/* <div className="form-group d-sm-flex margin">
-              <div className="d-flex align-items-center flex-fill me-sm1 my-sm-0 border-bottom position-relative">
-                <input
-                  type="date"
-                  id="dep"
-                  name="dep"
-                  required
-                  placeholder="Depart Date"
-                  className="form-control"
-                  onChange={handleDepChange}
-                  value={dep}
-                />
-                <div className="label" id="depart" />
-              </div>
-              <div className="d-flex align-items-center flex-fill ms-sm-1 my-sm-0 my-4 border-bottom position-relative">
-                <input
-                  type="date"
-                  id="arr"
-                  name="arr"
-                  required
-                  placeholder="Return Date"
-                  className="form-control"
-                  onChange={handleArrChange}
-                  value={arr}
-                />
-                <div className="label" id="return" />
-              </div>
-            </div> */}
+            
             <div className="form-group my-3">
               <div className="btn btn-secondary rounded-2 d-flex justify-content-center text-center p-3"
                 onClick={filterFlights}>
@@ -175,7 +108,7 @@ function OffersPage({ offers }) {
           </form>
         </div>
       </div>
-      {flights == null ? <></> : (
+      {flights === null ? <></> : (
         <DataTable
           columns={columns}
           data={flights}

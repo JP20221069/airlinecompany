@@ -59,18 +59,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage addToken={addToken} addUser={addUser} />} />
         <Route path="/register" element={<Register />} />
-<<<<<<< HEAD
-        <Route path="/" element={<NavBar token={token} user={user} />}>
-          <Route path="offers" element={<OffersPage token={token} user={user} offers={offers} />} />
-          <Route path="home" element={<HomePage token={token} user={user} addOffers={addOffers} />} />
-          <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations} />} />
-          <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations} />} />
-          <Route path="admin" element={<AdminPage user={user} token={token} />} />
-        </Route>
-=======
         <Route path="/" element={<NavBar token={token} user={user}/>}>
-          <Route path="offers" element={<OffersPage token={token} user={user}/>}/>
-          <Route path="home" element={<HomePage token={token} user={user}/>}/>
+          <Route path="offers" element={<OffersPage token={token} user={user} offers={offers}/>}/>
+          <Route path="home" element={<HomePage token={token} user={user} addOffers={addOffers}/>}/>
           <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations}/>}/>
           <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations}/>}/>
           <Route path="admin" element={<AdminPage user={user} token={token}/>}/>
@@ -78,7 +69,6 @@ function App() {
           
 
         </Route> 
->>>>>>> 0585f3073a4e52c1480e191a12ce49a166bb2fe7
       </Routes>
     </BrowserRouter>
   );
