@@ -3,9 +3,11 @@ import { useState, useEffect, useMemo } from "react";
 import DataTable from "react-data-table-component";
 import { FaPlane } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
 
 
-function OffersPage({ offers }) {
+function OffersPage({ token, offers }) {
+
 
   const [flights, setFlights] = useState(offers);
   const [from, setFrom] = useState('');
@@ -18,11 +20,12 @@ function OffersPage({ offers }) {
     setTo(toEvent.target.value);
     // console.log('to is: ', toEvent.target.value);
   }
+  const [flightID, setFlightID] = useState(0)
   const columns = [
     {
       name: "ID",
       selector: row => row.id,
-      maxWidth : '10px '
+      maxWidth: '10px '
     },
     {
       name: "City From",
@@ -44,20 +47,34 @@ function OffersPage({ offers }) {
     },
     {
       name: "Book Flight",
-      cell: () => <Link ><FaPlane/></Link>,
+      selector: row => row.id,
+      cell: () => <Link
+        onClick={() => {
+          setOpenModal(true)
+          console.log(flightID)
+        }}
+        >
+        <FaPlane />
+      </Link>, //ovde da prosledim FlightID iz DataTable u Modal
       center: true,
     }
   ]
+
+
+
   function filterFlights() {
     console.log(offers)
     setFlights(offers)
     setFlights(offers.filter(
-      item =>item.city_from.name.toLowerCase().includes(from.toLowerCase()) && item.city_to.name.toLowerCase().includes(to.toLowerCase()),
+      item => item.city_from.name.toLowerCase().includes(from.toLowerCase()) && item.city_to.name.toLowerCase().includes(to.toLowerCase()),
     ));
 
   }
 
-  function resetFilter (){
+  const [openModal, setOpenModal] = useState(false)
+
+
+  function resetFilter() {
     setFlights(offers)
   }
 
@@ -94,7 +111,7 @@ function OffersPage({ offers }) {
                 <div className="label" id="to" />
               </div>
             </div>
-            
+
             <div className="form-group my-3">
               <div className="btn btn-secondary rounded-2 d-flex justify-content-center text-center p-3"
                 onClick={filterFlights}>
@@ -112,14 +129,17 @@ function OffersPage({ offers }) {
         <DataTable
           columns={columns}
           data={flights}
-          selectableRows
           pagination
-          // paginationResetDefaultPage={resetPaginationToggle}
           subHeader
-          // subHeaderComponent={subHeaderComponentMemo}
           persistTableHead
+          selectableRows
+          onRowClicked={(row) => {
+            console.log(row.id)
+            setFlightID(row.id)
+            }}
         ></DataTable>
       )}
+      {openModal && <Modal closeModal={setOpenModal}  token={token}/>}
     </div>
   );
 }
