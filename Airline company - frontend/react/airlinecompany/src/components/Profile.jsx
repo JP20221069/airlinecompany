@@ -7,6 +7,22 @@ function Profile({ user, token, addReservations }) {
 
   console.log(user.name + " PROFILE");
 
+  const [userData, setUserData] = useState({
+    username: user.username,
+    password: user.password,
+    name: user.name,
+    lastname: user.lastname,
+    DOB: user.DOB,
+    email: user.email
+  });
+
+  function handleInput(e) {
+    let newUserData = userData;
+    newUserData[e.target.name] = e.target.value;
+    setUserData(newUserData);
+    console.log(newUserData)
+  }
+
   function getReservations() {
     var config = {
       method: "get",
@@ -28,9 +44,33 @@ function Profile({ user, token, addReservations }) {
       });
   }
 
-  function editUser(){
+  function editUser(e) {
+    var config = {
+      method: 'put',
+      maxBodyLength: Infinity,
+      url: 'http://127.0.0.1:8000/api/editprofile',
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+    e.preventDefault();
+    axios.put("http://127.0.0.1:8000/api/editprofile", userData, config).then((res) => { //ovo mi nije radilo bez http iz nekog razloga
+      console.log(res.data);
+    })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
-  }
+  // axios(config)
+  //   .then(function (response) {
+  //     console.log(JSON.stringify(response.data));
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+
+  // }
 
   return (
     <div>
@@ -49,89 +89,97 @@ function Profile({ user, token, addReservations }) {
             </div>
           </div>
           <div className="col-md-5 border-right">
-            <div className="p-3 py-5">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h4 className="text-right">My Profile</h4>
+            <form onSubmit={editUser}>
+              <div className="p-3 py-5">
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <h4 className="text-right">My Profile</h4>
+                </div>
+                <div className="row mt-2">
+                  <div className="col-md-6">
+                    <label className="labels">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder={user.name}
+                      className="form-control"
+                      onChange={handleInput}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="labels">Surname</label>
+                    <input
+                      type="text"
+                      name="lastname"
+                      className="form-control"
+                      placeholder={user.lastname}
+                      onChange={handleInput}
+                    />
+                  </div>
+                </div>
+                <div className="row mt-3">
+                  <div className="col-md-12">
+                    <label className="labels">Email</label>
+                    <input
+                      type="text"
+                      name="email"
+                      className="form-control"
+                      placeholder={user.email}
+                      onChange={handleInput}
+                    />
+                  </div>
+                  <div className="col-md-12">
+                    <label className="labels">Date of birth</label>
+                    <input
+                      type="text"
+                      name="DOB"
+                      className="form-control"
+                      placeholder={user.DOB}
+                      onChange={handleInput}
+                    />
+                  </div>
+                  <div className="col-md-12">
+                    <label className="labels">Username</label>
+                    <input
+                      type="text"
+                      name="username"
+                      className="form-control"
+                      placeholder={user.username}
+                      onChange={handleInput}
+                    />
+                  </div>
+                  <div className="col-md-12">
+                    <label className="labels">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      className="form-control"
+                      placeholder={user.password}
+                      onChange={handleInput}
+                    />
+                  </div>
+                </div>
+                <br></br>
+                <div className="row icon-boxes justify-content-center">
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="submit"
+                  >
+                    Save Profile
+                  </button>
+                </div>
+                <br></br>
+
               </div>
-              <div className="row mt-2">
-                <div className="col-md-6">
-                  <label className="labels">Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="first name"
-                    value={user.name}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="labels">Surname</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={user.lastname}
-                    placeholder="surname"
-                  />
-                </div>
-              </div>
-              <div className="row mt-3">
-                <div className="col-md-12">
-                  <label className="labels">Email</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="enter email"
-                    value={user.email}
-                  />
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Date of birth</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="enter date of birth"
-                    value={user.DOB}
-                  />
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Username</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="enter username"
-                    value={user.username}
-                  />
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="******"
-                    value={user.password}
-                  />
-                </div>
-              </div>
-              <br></br>
-              <div className="row icon-boxes justify-content-center">
-                <button
-                onClick={editUser}
-                  className="btn btn-outline-secondary"
-                  type="button"
-                >
-                  Save Profile
-                </button>
-              </div>
-              <br></br>
-              <div className="row icon-boxes justify-content-center">
-                <Link
-                  onClick={getReservations}
-                  className="btn btn-outline-secondary"
-                  type="button"
-                  to = "/myreservations"
-                >
-                  My Reservations
-                </Link>
-              </div>
+            </form>
+            <div className="row icon-boxes justify-content-center">
+              <Link
+                onClick={getReservations}
+                className="btn btn-outline-secondary"
+                type="button"
+                to="/myreservations"
+              >
+                My Reservations
+              </Link>
             </div>
           </div>
           <div className="col-md-4"></div>

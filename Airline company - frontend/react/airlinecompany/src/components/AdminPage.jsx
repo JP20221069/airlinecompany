@@ -28,6 +28,15 @@ function AdminPage({ token, user }) {
     }
   });
 
+  function getUsers() {
+    if (users == null) {
+      axios.get("http://127.0.0.1:8000/api/users", config2).then((response) => {
+        console.log(response.data);
+        setUsers(response.data.users);
+      });
+    }
+  }
+
   const [reservations, setReservations] = useState();
 
   var config1 = {
@@ -48,8 +57,28 @@ function AdminPage({ token, user }) {
     }
   });
 
-  const deleteUser = event => {
-    console.log("delete")
+  function deleteUser(id) {
+
+    var config = {
+      method: 'delete',
+      maxBodyLength: Infinity,
+      url: 'http://127.0.0.1:8000/api/deleteuser/' + id,
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      }
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+            axios.get("http://127.0.0.1:8000/api/users", config2).then((response) => {
+              console.log(response.data);
+              setUsers(response.data.users);
+            });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (
@@ -74,12 +103,12 @@ function AdminPage({ token, user }) {
               {users == null ? (
                 <></>
               ) : (
-                users.map((user, index) => (
-                  <tr key={index} >
-                    <td>{index}</td>
+                users.map((user) => (
+                  <tr key={user.id} >
+                    <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.role.name}</td>
-                    <td><Link style={{ color: 'red' }} onClick={deleteUser}><FiUserMinus /></Link></td>
+                    <td><Link style={{ color: 'red' }} onClick={() => { deleteUser(user.id) }}><FiUserMinus /></Link></td>
                   </tr>
                 ))
               )}

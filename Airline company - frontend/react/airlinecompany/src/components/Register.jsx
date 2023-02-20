@@ -119,8 +119,8 @@ function Register() {
                   />
                 </div>
                 <div className="text-center">
-                
-                <button
+
+                  <button
                     type="submit"
                     className="btn btn-primary btn-block"
                   >
