@@ -37,7 +37,7 @@ function Profile({ user, token, addReservations }) {
               <img
                 className="rounded-circle mt-5"
                 width="150px"
-                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                src="https://cdn-icons-png.flaticon.com/512/1202/1202380.png?w=1380&t=st=1676896127~exp=1676896727~hmac=58482766eb4204e74d17927e32b3469b111b7068e906db5c15a8aeb52be834d4"
               />
               <span className="font-weight-bold">{user.name}</span>
               <span className="text-black-50">{user.email}</span>
