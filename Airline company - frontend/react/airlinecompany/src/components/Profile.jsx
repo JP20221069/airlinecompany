@@ -28,6 +28,10 @@ function Profile({ user, token, addReservations }) {
       });
   }
 
+  function editUser(){
+
+  }
+
   return (
     <div>
       <div className="container rounded bg-white mt-5 mb-5">
@@ -107,15 +111,18 @@ function Profile({ user, token, addReservations }) {
                   />
                 </div>
               </div>
-              <div className="mt-5 text-center">
+              <br></br>
+              <div className="row icon-boxes justify-content-center">
                 <button
+                onClick={editUser}
                   className="btn btn-outline-secondary"
                   type="button"
                 >
                   Save Profile
                 </button>
               </div>
-              <div className="mt-5 text-center">
+              <br></br>
+              <div className="row icon-boxes justify-content-center">
                 <Link
                   onClick={getReservations}
                   className="btn btn-outline-secondary"
