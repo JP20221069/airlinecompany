@@ -11,6 +11,7 @@ import OffersPage from "./components/OffersPage";
 import Profile from "./components/Profile";
 import axios from "axios";
 import MyReservations from "./components/MyReservations";
+import Map from "./components/Map";
 
 function App() {
   const [token, setToken] = useState();
@@ -58,6 +59,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage addToken={addToken} addUser={addUser} />} />
         <Route path="/register" element={<Register />} />
+<<<<<<< HEAD
         <Route path="/" element={<NavBar token={token} user={user} />}>
           <Route path="offers" element={<OffersPage token={token} user={user} offers={offers} />} />
           <Route path="home" element={<HomePage token={token} user={user} addOffers={addOffers} />} />
@@ -65,6 +67,18 @@ function App() {
           <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations} />} />
           <Route path="admin" element={<AdminPage user={user} token={token} />} />
         </Route>
+=======
+        <Route path="/" element={<NavBar token={token} user={user}/>}>
+          <Route path="offers" element={<OffersPage token={token} user={user}/>}/>
+          <Route path="home" element={<HomePage token={token} user={user}/>}/>
+          <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations}/>}/>
+          <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations}/>}/>
+          <Route path="admin" element={<AdminPage user={user} token={token}/>}/>
+          <Route path="map" element={<Map/>}/>
+          
+
+        </Route> 
+>>>>>>> 0585f3073a4e52c1480e191a12ce49a166bb2fe7
       </Routes>
     </BrowserRouter>
   );

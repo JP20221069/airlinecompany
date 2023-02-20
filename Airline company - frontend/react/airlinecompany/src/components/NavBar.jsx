@@ -3,6 +3,7 @@ import axios from "axios";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
 function NavBar({ token, user }) {
 
   console.log(user);
@@ -92,6 +93,11 @@ function NavBar({ token, user }) {
                       Logout
                     </a>
                   )}
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/map">
+                    Our destinations
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link disabled">Disabled</a>
