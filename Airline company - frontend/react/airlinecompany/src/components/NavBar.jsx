@@ -94,6 +94,11 @@ function NavBar({ token, user }) {
                   )}
                 </li>
                 <li className="nav-item">
+                  <Link className="nav-link active" to="/map">
+                    Our destinations
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link disabled">Disabled</a>
                 </li>
               </ul>

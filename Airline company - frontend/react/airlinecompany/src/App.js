@@ -11,6 +11,7 @@ import OffersPage from "./components/OffersPage";
 import Profile from "./components/Profile";
 import axios from "axios";
 import MyReservations from "./components/MyReservations";
+import Map from "./components/Map";
 
 function App() {
   const [token, setToken] = useState();
@@ -44,6 +45,8 @@ function App() {
           <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations}/>}/>
           <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations}/>}/>
           <Route path="admin" element={<AdminPage user={user} token={token}/>}/>
+          <Route path="map" element={<Map/>}/>
+
         </Route> 
       </Routes>
     </BrowserRouter>
