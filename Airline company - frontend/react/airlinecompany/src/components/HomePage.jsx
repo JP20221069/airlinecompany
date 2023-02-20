@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Currency from "./Currency.js";
 
 function HomePage({ addOffers }) {
   function getOffers() {
@@ -31,8 +32,24 @@ function HomePage({ addOffers }) {
 
   const { content, author } = quotes;
 
-  const axios = require("axios");
+  const api = {
+    key: "9027a17e9a6ed2f18f6586b3d3a286f0",
+    base: "https://api.openweathermap.org/data/2.5/",
+  };
 
+  const [search, setSearch] = useState("");
+  const [weather, setWeather] = useState({});
+
+  /*
+      Search button is pressed. Make a fetch call to the Open Weather Map API.
+    */
+  const searchPressed = () => {
+    fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setWeather(result);
+      });
+  };
 
   return (
     <section id="hero" className="d-flex align-items-center">
@@ -80,12 +97,45 @@ function HomePage({ addOffers }) {
           </blockquote>
           <button
             onClick={getNewQuote}
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-primary"
             type="button"
           >
             New Quote
           </button>
         </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div className="row icon-boxes justify-content-center">
+        <div className="col-xl-7 col-lg-9 text-center">
+            <h2>Check Weather</h2>
+          </div>
+          <input
+            type="text"
+            placeholder="Enter city/town..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          
+          <button onClick={searchPressed} className="btn btn-outline-secondary">
+            Search
+          </button>
+        </div>
+        
+        {typeof weather.main !== "undefined" ? (
+          <div>
+            {/* Location  */}
+            <p>{weather.name}</p>
+
+            {/* Temperature Celsius  */}
+            <p>{weather.main.temp}°C</p>
+
+            {/* Condition (Sunny ) */}
+            <p>{weather.weather[0].main}</p>
+            <p>({weather.weather[0].description})</p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </section>
   );
