@@ -8,9 +8,18 @@ function AdminPage({ token, user }) {
   console.log(user);
     
   const [users, setUsers] = useState();
+  var config2 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://127.0.0.1:8000/api/users",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
+
   useEffect(() => {
     if (users == null) {
-      axios.get("http://127.0.0.1:8000/api/users", config ).then((response) => {
+      axios.get("http://127.0.0.1:8000/api/users", config2).then((response) => {
         console.log(response.data);
         setUsers(response.data.users);
       });
@@ -19,7 +28,7 @@ function AdminPage({ token, user }) {
 
   const [reservations, setReservations] = useState();
 
-  var config = {
+  var config1 = {
     method: "get",
     maxBodyLength: Infinity,
     url: "http://127.0.0.1:8000/api/reservations",
@@ -30,7 +39,7 @@ function AdminPage({ token, user }) {
 
   useEffect(() => {
     if (reservations == null) {
-      axios.get("http://127.0.0.1:8000/api/reservations", config).then((response) => {
+      axios.get("http://127.0.0.1:8000/api/reservations", config1).then((response) => {
         console.log(response.data);
         setReservations(response.data.reservations);
       });
