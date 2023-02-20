@@ -19,32 +19,52 @@ function App() {
 
   const [reservations, setReservations] = useState([]);
 
-  function addToken(auth_token){
+  const [filter, setFilter] = useState({});
+
+  const [offers, setOffers] = useState([]);
+
+  function addToken(auth_token) {
     setToken(auth_token);
   }
 
-  function addUser(user){
+  function addUser(user) {
     setUser(user);
     console.log(user);
   }
 
-  function addReservations(reservations){
+  function addReservations(reservations) {
     setReservations(reservations);
     console.log(reservations);
   }
-  
+
+  function onSearch (from, to, dep, arr){
+    var filter = {
+      "from": from,
+      "to": to,
+      "dep": dep,
+      "arr": arr
+    }
+    setFilter(filter);
+    console.log("Filter in App.js ", filter);
+  }
+
+  function addOffers(offers){
+    setOffers(offers);
+    console.log(offers);
+  }
+
   return (
     <BrowserRouter className="App">
       <Routes>
-        <Route path="/login" element={<LoginPage addToken={addToken} addUser={addUser}/>} />
+        <Route path="/login" element={<LoginPage addToken={addToken} addUser={addUser} />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<NavBar token={token} user={user}/>}>
-          <Route path="offers" element={<OffersPage token={token} user={user}/>}/>
-          <Route path="home" element={<HomePage token={token} user={user}/>}/>
-          <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations}/>}/>
-          <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations}/>}/>
-          <Route path="admin" element={<AdminPage user={user} token={token}/>}/>
-        </Route> 
+        <Route path="/" element={<NavBar token={token} user={user} />}>
+          <Route path="offers" element={<OffersPage token={token} user={user} offers={offers} />} />
+          <Route path="home" element={<HomePage token={token} user={user} addOffers={addOffers} />} />
+          <Route path="profile" element={<Profile token={token} user={user} addReservations={addReservations} />} />
+          <Route path="myreservations" element={<MyReservations token={token} user={user} reservations={reservations} />} />
+          <Route path="admin" element={<AdminPage user={user} token={token} />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
