@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Currency from "./Currency.js";
 
 function HomePage({ addOffers }) {
   function getOffers() {
