@@ -31,11 +31,11 @@ function HomePage({ addOffers }) {
 
   const { content, author } = quotes;
 
+  const axios = require("axios");
+
+
   return (
-    <section
-      id="hero"
-      className="d-flex align-items-center"
-    >
+    <section id="hero" className="d-flex align-items-center">
       <div
         className="container position-relative"
         data-aos="fade-up"
@@ -73,10 +73,10 @@ function HomePage({ addOffers }) {
               </div>
             </div>
           </div>
-          <blockquote class="blockquote text-center">
-            <p class="mb-0">{content}</p>
+          <blockquote className="blockquote text-center">
+            <p className="mb-0">{content}</p>
             <br></br>
-            <footer class="blockquote-footer">{author}</footer>
+            <footer className="blockquote-footer">{author}</footer>
           </blockquote>
           <button
             onClick={getNewQuote}
