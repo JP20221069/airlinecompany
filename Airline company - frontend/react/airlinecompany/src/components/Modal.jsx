@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Modal.css";
 import { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Modal({token, closeModal, flightID }) {
 
@@ -31,7 +32,7 @@ function Modal({token, closeModal, flightID }) {
 
         axios(config)
             .then(function (response) {
-
+                Swal.fire("Reservation created", "", "success");
                 console.log(JSON.stringify(response.data));
             })
             .catch(function (error) {

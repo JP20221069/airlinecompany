@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Register() {
-  //neke promenljive su drugacije nazvane 
+  //neke promenljive su drugacije nazvane
   const [userData, setUserData] = useState({
     username: "",
     password: "",
     name: "",
     lastname: "",
-    DOB: ""
+    DOB: "",
   });
 
   let navigate = useNavigate();
@@ -24,10 +24,18 @@ function Register() {
 
   function handleRegister(e) {
     e.preventDefault();
-    axios.post("http://127.0.0.1:8000/api/register", userData).then((res) => { //ovo mi nije radilo bez http iz nekog razloga
-      console.log(res.data);
-      navigate("/login");
-    })
+    axios
+      .post("http://127.0.0.1:8000/api/register", userData)
+      .then((res) => {
+        //ovo mi nije radilo bez http iz nekog razloga
+        if (res.data.success == true) {
+          console.log(res.data);
+          Swal.fire("User registered successfully", "", "success");
+          navigate("/login");
+        } else {
+          Swal.fire("Cannot register user", "", "error");
+        }
+      })
       .catch((e) => {
         console.log(e);
       });
@@ -119,11 +127,7 @@ function Register() {
                   />
                 </div>
                 <div className="text-center">
-
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-block"
-                  >
+                  <button type="submit" className="btn btn-primary btn-block">
                     Register
                   </button>
                 </div>
@@ -144,7 +148,7 @@ function Register() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;

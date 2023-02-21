@@ -94,25 +94,7 @@ function NavBar({ token, user }) {
                     Our destinations
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled">Disabled</a>
-                </li>
               </ul>
-              <form className="d-flex input-group w-auto">
-                <input
-                  type="search"
-                  className="form-control"
-                  placeholder="Type query"
-                  aria-label="Search"
-                />
-                <button
-                  className="btn btn-outline-primary"
-                  type="button"
-                  data-mdb-ripple-color="dark"
-                >
-                  Search
-                </button>
-              </form>
             </div>
           </div>
         </nav>

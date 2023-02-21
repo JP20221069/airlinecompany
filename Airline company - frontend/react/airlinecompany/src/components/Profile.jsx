@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 function Profile({ user, token, addReservations }) {
 
@@ -55,9 +56,11 @@ function Profile({ user, token, addReservations }) {
     }
     e.preventDefault();
     axios.put("http://127.0.0.1:8000/api/editprofile", userData, config).then((res) => { //ovo mi nije radilo bez http iz nekog razloga
-      console.log(res.data);
+      console.log(res.data);     
+      Swal.fire('User updated successfully', '', 'success');
     })
       .catch((e) => {
+        Swal.fire('User cannot be updated', '', 'error');
         console.log(e);
       });
   };

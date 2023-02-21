@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { FiUserMinus } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 function AdminPage({ token, user }) {
 
@@ -72,6 +73,7 @@ function AdminPage({ token, user }) {
       .then(function (response) {
         console.log(JSON.stringify(response.data));
             axios.get("http://127.0.0.1:8000/api/users", config2).then((response) => {
+              Swal.fire('User deleted successfully', '', 'success');
               console.log(response.data);
               setUsers(response.data.users);
             });

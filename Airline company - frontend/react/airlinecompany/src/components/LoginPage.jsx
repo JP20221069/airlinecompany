@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function LoginPage({ addToken, addUser }) {
   const [userData, setUserData] = useState({
@@ -30,9 +31,9 @@ function LoginPage({ addToken, addUser }) {
         addUser(res.data.logged_user);
         navigate("/");
       }
-
     })
       .catch((e) => {
+        Swal.fire('Unable to login', '', 'error');
         console.log(e);
       });
   }
