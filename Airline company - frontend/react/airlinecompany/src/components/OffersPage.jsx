@@ -51,7 +51,6 @@ function OffersPage({ token, offers }) {
       cell: () => <Link
         onClick={() => {
           setOpenModal(true)
-          console.log(flightID)
         }}
         >
         <FaPlane />
@@ -60,6 +59,9 @@ function OffersPage({ token, offers }) {
     }
   ]
 
+  useEffect(()=>{
+    setFlights(offers)
+  })
 
 
   function filterFlights() {
@@ -130,16 +132,13 @@ function OffersPage({ token, offers }) {
           columns={columns}
           data={flights}
           pagination
-          subHeader
-          persistTableHead
-          selectableRows
+          highlightOnHover
           onRowClicked={(row) => {
-            console.log(row.id)
             setFlightID(row.id)
             }}
         ></DataTable>
       )}
-      {openModal && <Modal closeModal={setOpenModal}  token={token}/>}
+      {openModal && <Modal closeModal={setOpenModal}  token={token} flightID={flightID}/>}
     </div>
   );
 }

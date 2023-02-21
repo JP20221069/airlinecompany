@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Modal.css";
 import { useState } from "react";
 import axios from "axios";
 
-function Modal({token, closeModal,flightID }) {
+function Modal({token, closeModal, flightID }) {
 
     const [adult, setAdult] = useState(1);
     const [children, setChildren] = useState(0);
@@ -23,7 +23,7 @@ function Modal({token, closeModal,flightID }) {
         var config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://127.0.0.1:8000/api/reserve?flight_id=6&number_of_children='+ c +'&number_of_adults='+a, //flight id 6 dok ne skonam kako da izvucem iz datatable
+            url: 'http://127.0.0.1:8000/api/reserve?flight_id='+ flightID+'&number_of_children='+ c +'&number_of_adults='+a, //flight id 6 dok ne skonam kako da izvucem iz datatable
             headers: {
                 Authorization: 'Bearer ' + token
             },
@@ -39,6 +39,9 @@ function Modal({token, closeModal,flightID }) {
             });
 
     }
+    useEffect(()=>{
+        console.log(flightID)
+    })
 
     return (
         <div className="modal-background">
