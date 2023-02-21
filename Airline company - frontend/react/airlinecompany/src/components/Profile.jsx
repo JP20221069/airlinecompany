@@ -171,7 +171,7 @@ function Profile({ user, token, addReservations }) {
 
               </div>
             </form>
-            <div className="row icon-boxes justify-content-center">
+            {user.role_id == 1 ? (<div className="row icon-boxes justify-content-center">
               <Link
                 onClick={getReservations}
                 className="btn btn-outline-secondary"
@@ -180,7 +180,7 @@ function Profile({ user, token, addReservations }) {
               >
                 My Reservations
               </Link>
-            </div>
+            </div>) : (<></>)}
           </div>
           <div className="col-md-4"></div>
         </div>

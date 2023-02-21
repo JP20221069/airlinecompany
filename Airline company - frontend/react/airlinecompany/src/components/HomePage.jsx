@@ -119,9 +119,12 @@ function HomePage({ addOffers }) {
             Search
           </button>
         </div>
-        
+        <br></br>
+        <br></br>
         {typeof weather.main !== "undefined" ? (
           <div>
+            
+            <blockquote className="blockquote text-center">
             {/* Location  */}
             <p>{weather.name}</p>
 
@@ -131,6 +134,7 @@ function HomePage({ addOffers }) {
             {/* Condition (Sunny ) */}
             <p>{weather.weather[0].main}</p>
             <p>({weather.weather[0].description})</p>
+            </blockquote>
           </div>
         ) : (
           ""
