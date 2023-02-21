@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { FiUserMinus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
+import './css/AdminPage.css';
 
 function AdminPage({ token, user }) {
 

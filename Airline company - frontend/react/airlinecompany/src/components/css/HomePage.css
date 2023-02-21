@@ -1,0 +1,56 @@
+.quote-button, .weather-button {
+    align-items: center;
+    background-color: #0A66C2;
+    border: 0;
+    border-radius: 100px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+    width: 30vw;
+    min-height: 40px;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    text-transform: uppercase;
+}
+
+.weather-button{
+    width: 20vw;
+}
+
+.quote-button:hover,
+.quote-button:focus,
+.weather-button:hover,
+.weather-button:focus {
+    background-color: #16437E;
+    color: #ffffff;
+}
+
+.quote-button:active,
+.weather-button:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+}
+
+.quote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 20vh;
+}
+
+.weather-container input {
+    width: 30vw;
+    text-align: center;
+    border: 1px solid #a0a4a8;
+    border-radius: 15px;
+    height: 4vh;
+}

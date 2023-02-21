@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./css/HomePage.css";
 
 function HomePage({ addOffers }) {
   function getOffers() {
@@ -89,51 +90,63 @@ function HomePage({ addOffers }) {
               </div>
             </div>
           </div>
-          <blockquote className="blockquote text-center">
-            <p className="mb-0">{content}</p>
+        </div>
+        <div className="quote-container">
+          <blockquote className="blockquote text-center ">
+            <h4 className="mb-0">{content}</h4>
             <br></br>
             <footer className="blockquote-footer">{author}</footer>
           </blockquote>
-          <button
-            onClick={getNewQuote}
-            className="btn btn-outline-primary"
-            type="button"
-          >
-            New Quote
-          </button>
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div className="row icon-boxes justify-content-center">
-        <div className="col-xl-7 col-lg-9 text-center">
-            <h2>Check Weather</h2>
+          <div calssName="button-container">
+            <button
+              onClick={getNewQuote}
+              className="quote-button"
+              type="button"
+            >
+              New Quote
+            </button>
           </div>
-          <input
-            type="text"
-            placeholder="Enter city/town..."
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          
-          <button onClick={searchPressed} className="btn btn-outline-secondary">
+        </div>
+
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <div className="weather-container">
+          <div>
+            <h3>Check Weather</h3>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Enter city/town..."
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+          <div>
+            <button onClick={searchPressed} className="weather-button">
             Search
           </button>
+          </div>
         </div>
+
         <br></br>
         <br></br>
+        <br></br>
+
         {typeof weather.main !== "undefined" ? (
-          <div>
-            
+          <div className="">
+
             <blockquote className="blockquote text-center">
-            {/* Location  */}
-            <p>{weather.name}</p>
+              {/* Location  */}
+              <p>{weather.name}</p>
 
-            {/* Temperature Celsius  */}
-            <p>{weather.main.temp}°C</p>
+              {/* Temperature Celsius  */}
+              <p>{weather.main.temp}°C</p>
 
-            {/* Condition (Sunny ) */}
-            <p>{weather.weather[0].main}</p>
-            <p>({weather.weather[0].description})</p>
+              {/* Condition (Sunny ) */}
+              <p>{weather.weather[0].main}</p>
+              <p>({weather.weather[0].description})</p>
             </blockquote>
           </div>
         ) : (

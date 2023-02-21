@@ -1,0 +1,119 @@
+/*-------------*/
+/* Offers Page */
+/*-------------*/
+
+.wrapper {
+    max-width: 800px;
+    margin: 50px auto;
+    border-radius: 15px;
+}
+
+.wrapper form {
+    padding: 30px 50px;
+}
+
+.wrapper form .form-group {
+    padding-bottom: .5rem;
+}
+
+/* .wrapper form a {
+    color: #333;
+  } */
+
+.wrapper form .form-control {
+    outline: none;
+    border: none;
+}
+
+.wrapper form .form-control:focus {
+    box-shadow: none;
+}
+
+.wrapper form input[type="text"]:focus::placeholder {
+    color: transparent
+}
+
+
+.wrapper form .label::after {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    font-size: 0.9rem;
+    margin: 0rem 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    font-weight: 600;
+    color: #808080;
+    transition: all .2s ease-in-out;
+    transform: scale(0);
+}
+
+.wrapper form .label#from::after {
+    content: 'From';
+}
+
+.wrapper form .label#to::after {
+    content: 'To';
+}
+
+.wrapper form input[type="text"]:focus~.label::after {
+    top: -15px;
+    left: 0px;
+    transform: scale(1);
+}
+
+.margin {
+    margin: 2rem 0rem;
+}
+
+
+/*ovaj deo se više nigde ne koristi */
+
+.all-offers {
+    max-width: 100vw;
+    display: flow;
+    padding: 40px 0;
+}
+
+.card {
+    position: relative;
+    width: 26rem;
+    margin: 0 auto;
+    border-radius: 15px;
+    width: 90vw;
+    margin-bottom: 25px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.card-date-time {
+    display: block;
+    width: 50%;
+    text-align: center;
+    justify-content: space-around;
+    border-right: 1px solid #999;
+}
+
+.card-time {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-flight-duration {
+    width: 50%;
+}
+
+.card-pricing {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}

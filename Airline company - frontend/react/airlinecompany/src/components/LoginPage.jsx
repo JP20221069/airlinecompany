@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import "./css/LoginPage.css"
 
 function LoginPage({ addToken, addUser }) {
   const [userData, setUserData] = useState({

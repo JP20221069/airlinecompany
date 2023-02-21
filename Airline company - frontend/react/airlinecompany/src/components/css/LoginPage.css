@@ -1,0 +1,8 @@
+.login-body {
+    height: 50%;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}

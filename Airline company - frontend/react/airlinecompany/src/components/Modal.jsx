@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Modal.css";
+import "./css/Modal.css";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";

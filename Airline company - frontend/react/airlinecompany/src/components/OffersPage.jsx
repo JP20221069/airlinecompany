@@ -4,6 +4,7 @@ import DataTable from "react-data-table-component";
 import { FaPlane } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import Modal from "./Modal";
+import "./css/OffersPage.css";
 
 
 function OffersPage({ token, offers }) {
